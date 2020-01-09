@@ -21,7 +21,7 @@
 
 -(id)init:(es_message_t *)message
 {
-    self = [super init];
+    self= [super init];
     if(self != nil){
         self.event = message->event_type;
         self.process =[[Process alloc] init:message];
