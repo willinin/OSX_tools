@@ -211,7 +211,7 @@ int inject(pid_t pid,const char *lib)
         }
     }
     
-    printf("%d\n", sizeof(injectCode));
+    //printf("%d\n", sizeof(injectCode));
     rc = mach_vm_write(remoteTask, remoteCode64, (vm_address_t)injectCode, sizeof(injectCode));
     MACH_ERR("Inject code to remote thread failed",rc);
     
@@ -223,7 +223,7 @@ int inject(pid_t pid,const char *lib)
     MACH_ERR("Set stack mem privilege failed", rc);
     
     
-    printf("0x%p 0x%p\n", remoteCode64,remoteStack64);
+    printf("%p %p\n", remoteCode64,remoteStack64);
     
     SetRemoteThread(remoteTask,remoteCode64,remoteStack64);
     return 0 ;
@@ -231,7 +231,6 @@ int inject(pid_t pid,const char *lib)
 
 int main(int argc, const char * argv[]) {
     
-    //inject(162,"/Users/linallen/get-pip.py");
     if(argc <3){
         fprintf(stderr, "Usage: %s pid _dylib_path",argv[0]);
         exit(0);
